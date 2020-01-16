@@ -14,9 +14,13 @@ export default createGlobalStyle`
     }
   }
 
-  html, body {
-    font: 16px sans-serif;
+  body,
+  input,
+  button {
+    font-family: sans-serif;
+  }
 
+  html, body {
     background-color: ${primaryColor.bg};
     color: ${primaryColor.text};
 

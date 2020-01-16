@@ -6,8 +6,8 @@ import { Container } from './styles';
 import GlobalStyle from '~/styles/global';
 
 interface Props {
- children: React.ReactNode;
- title: string
+  children: React.ReactNode;
+  title: string;
 }
 
 function Layout({ children, title }: Props) {
@@ -15,11 +15,7 @@ function Layout({ children, title }: Props) {
     <Container>
       <GlobalStyle />
       <SEO title={title} />
-      <main>{children}</main>
-      <footer>
-        {`© ${new Date().getFullYear()}, Built by `}
-        <a href="https://github.com/ieeeifpbcg">aaaaaaaaaaaaaa</a>
-      </footer>
+      {children}
     </Container>
   );
 }

@@ -7,6 +7,7 @@ module.exports = {
     'react-app',
     'airbnb',
     'plugin:react/recommended',
+    'prettier/react',
     'prettier/@typescript-eslint',
   ],
   globals: {
@@ -22,9 +23,18 @@ module.exports = {
     sourceType: 'module',
     allowImportExportEverywhere: true,
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'import-helpers'],
+  plugins: [
+    'react',
+    'react-hooks',
+    'prettier',
+    '@typescript-eslint',
+    'import-helpers',
+  ],
   rules: {
     camelcase: 'off',
+    'object-curly-newline': 'off',
+    'comma-dangle': 'off',
+    'prettier/prettier': 'error',
     'global-require': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'no-param-reassign': 'off',

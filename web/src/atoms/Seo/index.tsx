@@ -10,9 +10,7 @@ interface Props {
   title: string;
 }
 
-function SEO({
-  description, lang, meta, title,
-}: Props) {
+function SEO({ description, lang, meta, title }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -24,7 +22,7 @@ function SEO({
           }
         }
       }
-    `,
+    `
   );
 
   const metaDescription = description || site.siteMetadata.description;

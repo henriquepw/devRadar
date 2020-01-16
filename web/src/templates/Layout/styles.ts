@@ -1,30 +1,10 @@
 import styled from 'styled-components';
 
-import { primaryColor } from '~/styles/colors';
-
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
 
   display: flex;
-  flex-direction: column;
-
-  main {
-    text-align: center;
-    padding: 24px;
-
-    h1 {
-      margin-bottom: 24px;
-    }
-  }
-
-  footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 24px;
-
-    a {
-      color: ${primaryColor.active};
-    }
-  }
+  align-items: flex-start;
 `;
