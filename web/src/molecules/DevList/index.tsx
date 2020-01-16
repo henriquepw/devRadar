@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import api from '~/services/api';
 
 import DevItem from '~/molecules/DevItem';
 
+import DevContext, { Dev } from '~/context/DevContext';
+
 import { Container } from './styles';
 
-interface Dev {
-  _id: number;
-  bio: string;
-  name: string;
-  techs: string[];
-  avatar_url: string;
-  github_username: string;
-}
-
 function DevList() {
-  const [devs, setDevs] = useState([]);
+  const { devs, setDevs } = useContext(DevContext);
 
   useEffect(() => {
     async function loadDevs(): Promise<void> {
       const response = await api.get('/devs');
 
-      setDevs(response.data);
+      setDevs!(response.data);
     }
 
     loadDevs();
-  }, []);
+  }, [setDevs]);
 
   return (
     <Container>

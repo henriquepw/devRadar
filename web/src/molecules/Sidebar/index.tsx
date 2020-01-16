@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import api from '~/services/api';
 
 import Button from '~/atoms/Button';
 import Input from '~/atoms/Input';
 
+import DevContext from '~/context/DevContext';
+
 import { Container } from './styles';
 
 function Sidebar() {
+  const { addDev } = useContext(DevContext);
+
   const [githubUsername, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState(0);
@@ -34,7 +38,7 @@ function Sidebar() {
   ): Promise<void> {
     e.preventDefault();
 
-    await api.post('/devs', {
+    const response = await api.post('/devs', {
       techs,
       latitude,
       longitude,
@@ -43,6 +47,8 @@ function Sidebar() {
 
     setGithubUsername('');
     setTechs('');
+
+    addDev!(response.data);
   }
 
   return (
