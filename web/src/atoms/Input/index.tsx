@@ -5,13 +5,23 @@ import { Container } from './styles';
 interface Props {
   name: string;
   children: string;
+  value?: string | number;
+  type?: string;
+  onChange?(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-function Input({ name, children }: Props) {
+function Input({ children, name, value, type, onChange }: Props) {
   return (
     <Container htmlFor={name}>
       {children}
-      <input name={name} id={name} required />
+      <input
+        type={type}
+        name={name}
+        id={name}
+        value={value}
+        onChange={onChange}
+        required
+      />
     </Container>
   );
 }

@@ -5,7 +5,7 @@ export const Container = styled.aside`
   max-width: 320px;
   padding: 30px 20px;
 
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
   border-radius: 2px;
 
@@ -22,8 +22,16 @@ export const Container = styled.aside`
   div {
     display: flex;
 
+    label {
+      flex: 1;
+    }
+
     label:first-child {
       margin-right: 20px;
     }
+  }
+
+  @media (max-width: 1000px) {
+    max-width: 100%;
   }
 `;

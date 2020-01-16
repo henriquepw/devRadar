@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 
+import DevList from '~/molecules/DevList';
 import Sidebar from '~/molecules/Sidebar';
 
 import Layout from '~/templates/Layout';
 
-const IndexPage: React.FC = () => (
-  <Layout title="Home">
+const IndexPage: FC = () => (
+  <Layout title="DevRadar">
     <Sidebar />
-    <main />
+    <main>
+      <DevList />
+    </main>
   </Layout>
 );
 
