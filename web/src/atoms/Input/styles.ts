@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-import { opacify } from 'polished';
-
-import { primaryColor } from '~/styles/colors';
+import { primaryColor, secundaryColor } from '~/styles/colors';
 
 export const Container = styled.label`
   display: flex;
   flex-direction: column;
-  color: ${opacify(-0.1, primaryColor.active)};
+  color: ${primaryColor.active};
   font-size: 0.875rem;
 
   input {
@@ -17,7 +15,7 @@ export const Container = styled.label`
     font-size: 0.875rem;
 
     border: none;
-    border-bottom: 1px solid ${opacify(-0.5, primaryColor.text)};
+    border-bottom: 1px solid ${secundaryColor.text};
     background: transparent;
 
     outline: none;

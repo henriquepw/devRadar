@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { darken } from 'polished';
+import { darken, opacify } from 'polished';
 
 import { Container } from './styles';
 import { primaryColor } from '~/styles/colors';
@@ -13,7 +13,7 @@ interface Props {
 const variants = {
   normal: {
     scale: 1,
-    background: primaryColor.active,
+    background: opacify(-0.1, primaryColor.active),
   },
   hover: {
     scale: 1.03,
