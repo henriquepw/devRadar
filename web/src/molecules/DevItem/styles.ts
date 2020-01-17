@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
+import { darken } from 'polished';
+
+import { primaryColor, secundaryColor } from '~/styles/colors';
+
 export const Container = styled.li`
-  background-color: #fff;
-  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+  background-color: ${secundaryColor.bg};
+  box-shadow: 0 0 10px 0 ${primaryColor.shadow};
   border-radius: 2px;
   padding: 24px;
 
@@ -14,6 +18,9 @@ export const Container = styled.li`
       width: 54px;
       height: 54px;
       border-radius: 50%;
+      margin: 8px;
+
+      box-shadow: 0 0 0 6px ${primaryColor.bg}, 0 0 0 8px ${secundaryColor.text};
     }
 
     div {
@@ -21,31 +28,32 @@ export const Container = styled.li`
 
       h1 {
         font-size: 1rem;
-        color: #333;
+        color: ${primaryColor.text};
       }
 
       span {
+        display: block;
         font-size: 0.8125rem;
-        color: #999;
+        color: ${secundaryColor.text};
         margin-top: 4px;
       }
     }
   }
 
   p {
-    color: #666;
+    color: ${primaryColor.text};
     font-size: 0.875rem;
     line-height: 1.25rem;
-    margin: 10px 0px;
+    margin: 16px 0px;
   }
 
   a {
-    color: #8e4dff;
+    color: ${primaryColor.active};
     font-size: 0.875rem;
-    transition: 0.3s ease;
+    transition: color 0.2s;
 
     &:hover {
-      color: #5a2ea6;
+      color: ${darken(0.2, primaryColor.active)};
     }
   }
 `;

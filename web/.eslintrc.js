@@ -34,6 +34,7 @@ module.exports = {
     camelcase: 'off',
     'object-curly-newline': 'off',
     'comma-dangle': 'off',
+    'arrow-parens': 'off',
     'prettier/prettier': 'error',
     'global-require': 'off',
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],

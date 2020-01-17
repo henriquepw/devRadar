@@ -1,12 +1,15 @@
+import { lighten } from 'polished';
+
 const primaryColor = {
-  bg: '#F3F3F3',
-  text: '#4F5159',
-  active: '#634D90',
+  bg: '#232427',
+  text: '#F9F9F9',
+  shadow: 'rgba(255, 255, 255, 0.03)',
+  active: '#ffa45c',
 };
 
 const secundaryColor = {
-  bg: '#F9F9F9',
-  text: '#FFFFFF',
+  bg: lighten(0.05, primaryColor.bg),
+  text: '#999',
 };
 
 export { primaryColor, secundaryColor };

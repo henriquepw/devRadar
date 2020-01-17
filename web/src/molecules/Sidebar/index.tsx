@@ -33,7 +33,7 @@ function Sidebar() {
     });
   }, []);
 
-  async function handlerSubmit(
+  async function handlerAddDev(
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> {
     e.preventDefault();
@@ -54,22 +54,18 @@ function Sidebar() {
   return (
     <Container>
       <h1>Register</h1>
-      <form onSubmit={handlerSubmit}>
+      <form onSubmit={handlerAddDev}>
         <Input
           name="github_username"
           value={githubUsername}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setGithubUsername(e.target.value);
-          }}
+          onChange={e => setGithubUsername(e.target.value)}
         >
           Github Username
         </Input>
         <Input
           name="techs"
           value={techs}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setTechs(e.target.value);
-          }}
+          onChange={e => setTechs(e.target.value)}
         >
           Technologies
         </Input>
@@ -78,9 +74,7 @@ function Sidebar() {
             type="number"
             name="latitude"
             value={latitude}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setLatitude(Number(e.target.value));
-            }}
+            onChange={e => setLatitude(Number(e.target.value))}
           >
             Latitude
           </Input>
@@ -88,9 +82,7 @@ function Sidebar() {
             type="number"
             name="longitude"
             value={longitude}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setLatitude(Number(e.target.value));
-            }}
+            onChange={e => setLatitude(Number(e.target.value))}
           >
             Longitude
           </Input>

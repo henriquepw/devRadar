@@ -1,22 +1,24 @@
 import styled from 'styled-components';
 
+import { primaryColor, secundaryColor } from '~/styles/colors';
+
 export const Container = styled.aside`
   width: 100%;
   max-width: 320px;
-  padding: 30px 20px;
+  padding: 32px 24px;
 
-  background-color: #fff;
-  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+  background-color: ${secundaryColor.bg};
+  box-shadow: 0 0 10px 0 ${primaryColor.shadow};
   border-radius: 2px;
 
   h1 {
     font-size: 1.25rem;
     text-align: center;
-    color: #333;
+    color: ${primaryColor.text};
   }
 
   form {
-    margin-top: 30px;
+    margin-top: 32px;
   }
 
   div {
@@ -27,7 +29,7 @@ export const Container = styled.aside`
     }
 
     label:first-child {
-      margin-right: 20px;
+      margin-right: 24px;
     }
   }
 
