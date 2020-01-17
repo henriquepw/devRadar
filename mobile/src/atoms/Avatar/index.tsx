@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Container } from './styles';
 
@@ -6,8 +6,8 @@ interface Props {
   uri: string;
 }
 
-function Avatar({ uri }: Props) {
+const Avatar: FC<Props> = ({ uri }) => {
   return <Container source={{ uri }} />;
-}
+};
 
 export default Avatar;

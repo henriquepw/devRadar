@@ -50,6 +50,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    'import/no-unresolved': ['error', { ignore: '@expo/vector-icons' }],
     'import/extensions': [
       'error',
       'ignorePackages',

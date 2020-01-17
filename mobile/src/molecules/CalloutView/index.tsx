@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Callout } from 'react-native-maps';
 
 import { Container, DevName, DevBio, DevTechs } from './styles';
@@ -14,7 +14,7 @@ interface Props {
   onPress(): void;
 }
 
-function CalloutView({ dev, onPress }: Props) {
+const CalloutView: FC<Props> = ({ dev, onPress }) => {
   return (
     <Callout onPress={onPress}>
       <Container>
@@ -24,6 +24,6 @@ function CalloutView({ dev, onPress }: Props) {
       </Container>
     </Callout>
   );
-}
+};
 
 export default CalloutView;
