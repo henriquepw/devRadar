@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-import { opacify, darken } from 'polished';
+import { motion } from 'framer-motion';
+import { opacify } from 'polished';
 
 import { primaryColor } from '~/styles/colors';
 
-export const Container = styled.button`
+export const Container = styled(motion.button)`
   cursor: pointer;
   width: 100%;
 
@@ -19,9 +20,9 @@ export const Container = styled.button`
   font-weight: bold;
   color: ${primaryColor.text};
 
-  transition: 0.4s ease;
+  user-select: none;
 
-  &:hover {
-    background-color: ${darken(0.1, primaryColor.active)};
+  &:active {
+    outline: none;
   }
 `;

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { primaryColor, secundaryColor } from './colors';
+import { primaryColor } from './colors';
 
 export default createGlobalStyle`
   * {
@@ -10,8 +10,16 @@ export default createGlobalStyle`
 
     &::selection {
       background-color: ${primaryColor.active};
-      color: ${secundaryColor.text};
+      color: white;
     }
+
+  }
+
+  *:focus,
+  a:focus,
+  button:focus {
+    outline: 2px solid ${primaryColor.active};
+    outline-offset: 6px;
   }
 
   body,
