@@ -3,11 +3,7 @@ import { Callout } from 'react-native-maps';
 
 import { Container, DevName, DevBio, DevTechs } from './styles';
 
-interface Dev {
-  name: string;
-  bio: string;
-  techs: string[];
-}
+import { Dev } from '~/context/DevContext';
 
 interface Props {
   dev: Dev;
@@ -16,7 +12,7 @@ interface Props {
 
 const CalloutView: FC<Props> = ({ dev, onPress }) => {
   return (
-    <Callout onPress={onPress}>
+    <Callout onPress={onPress} tooltip={true}>
       <Container>
         <DevName>{dev.name}</DevName>
         <DevBio>{dev.bio}</DevBio>

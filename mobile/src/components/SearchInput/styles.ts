@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import { primaryColor } from '~/styles/colors';
+import { opacify } from 'polished';
 
 export const Container = styled.TextInput`
   flex: 1;
@@ -6,8 +8,8 @@ export const Container = styled.TextInput`
   border-radius: 25px;
   padding: 0 20px;
 
-  color: #333;
-  background-color: #fff;
+  color: ${primaryColor.text};
+  background-color: ${opacify(-0.2, primaryColor.bg)};
   font-size: 16px;
 
   shadow-color: #000;

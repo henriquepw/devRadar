@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Marker, Region } from 'react-native-maps';
+import { Region } from 'react-native-maps';
 import { NavigationStackProp } from 'react-navigation-stack';
 
 import {
@@ -7,12 +7,10 @@ import {
   getCurrentPositionAsync,
 } from 'expo-location';
 
-import Avatar from '~/atoms/Avatar';
+import SearchForm from '~/components/SearchForm';
+import Markers from '~/components/Markers';
 
-import CalloutView from '~/molecules/CalloutView';
-import SearchForm from '~/molecules/SearchForm';
-
-import api from '~/services/api';
+import { DevProvider } from '~/context/DevContext';
 
 import { Container } from './styles';
 
@@ -21,9 +19,7 @@ interface Props {
 }
 
 const Main: FC<Props> = ({ navigation }) => {
-  const [devs, setDevs] = useState([]);
-  const [currentRegion, setCurrentRegion] = useState(null);
-  const [techs, setTechs] = useState('');
+  const [currentRegion, setCurrentRegion] = useState<Region>(null);
 
   useEffect(() => {
     async function loadInitialPosition() {
@@ -48,48 +44,28 @@ const Main: FC<Props> = ({ navigation }) => {
     loadInitialPosition();
   }, []);
 
-  async function loadDevs() {
-    const { latitude, longitude } = currentRegion;
-
-    const response = await api.get('/search', {
-      params: { latitude, longitude, techs },
-    });
-
-    setDevs(response.data.devs);
-  }
-
   function handleRegionChanged(region: Region) {
     setCurrentRegion(region);
   }
 
-  function NavigateToProfile() {
-    navigation.navigate('Profile', { githubUsername: 'henry-ns' });
+  function NavigateToProfile(githubUsername: string) {
+    navigation.navigate('Profile', { githubUsername });
   }
 
   return (
-    currentRegion && (
-      <>
-        <Container
-          onRegionChangeComplete={handleRegionChanged}
-          initialRegion={currentRegion}
-        >
-          {devs.map(dev => (
-            <Marker
-              key={dev._id}
-              coordinate={{
-                longitude: dev.location.coordinates[0],
-                latitude: dev.location.coordinates[1],
-              }}
-            >
-              <Avatar uri={dev.avatar_url} />
-              <CalloutView onPress={NavigateToProfile} dev={dev} />
-            </Marker>
-          ))}
-        </Container>
-        <SearchForm onPress={loadDevs} />
-      </>
-    )
+    <DevProvider>
+      <Container
+        onRegionChangeComplete={handleRegionChanged}
+        initialRegion={currentRegion}
+      >
+        <Markers navigate={NavigateToProfile} />
+      </Container>
+      <SearchForm
+        latitude={currentRegion?.latitude}
+        longitude={currentRegion?.longitude}
+      />
+    </DevProvider>
   );
-}
+};
 
 export default Main;
