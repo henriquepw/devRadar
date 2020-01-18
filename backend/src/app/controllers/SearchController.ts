@@ -26,7 +26,7 @@ class SeachControllers {
             type: 'Point',
             coordinates: [longitude, latitude]
           },
-          $maxDistance: radius * 1000
+          $maxDistance: radius * 1000 // in meters
         }
       }
     })

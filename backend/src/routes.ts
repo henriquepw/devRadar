@@ -5,11 +5,7 @@ import SearchController from './app/controllers/SearchController'
 
 const routes = Router()
 
-routes.get('/', (_, res) => {
-  return res.json({
-    message: 'Hello :)'
-  })
-})
+routes.get('/', (_, res) => res.json({ message: 'Hello :)' }))
 
 routes
   .route('/devs')

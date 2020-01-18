@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
 import axios from 'axios'
 
-import Dev from '../schemas/Dev'
+import Dev, { DevInterface } from '../schemas/Dev'
 
 import parseStringAsArray from '../../utils/parseStringAsArray'
-import { findConnections, sendMessage } from '../../websocket'
+import io from '../../webSocket'
 
 interface StoreBody {
   github_username: string
@@ -22,12 +22,15 @@ class DevController {
 
   public async store (req: Request, res: Response) {
     const {
-      github_username,
       techs,
       latitude,
-      longitude
+      longitude,
+      github_username
     } = req.body as StoreBody
 
+    /**
+     * Checking if the Dev already exists
+     */
     const devExists = await Dev.findOne({ github_username })
 
     if (devExists) {
@@ -36,11 +39,18 @@ class DevController {
       })
     }
 
+    /**
+     * Creating Dev
+     */
     const response = await axios.get(
       `https://api.github.com/users/${github_username}`
     )
 
-    const { name = github_username, avatar_url, bio } = response.data
+    const {
+      name = github_username,
+      avatar_url,
+      bio
+    } = response.data as DevInterface
 
     const techsArray = parseStringAsArray(techs)
 
@@ -58,14 +68,16 @@ class DevController {
       location
     })
 
-    // Filtar as conexões que estão há no máximo 10km de distância
-    // e que o novo deve tenha pelo menos um das technologias filtradas
-    const sendSocketMessageTo = findConnections(
+    /**
+     * List the connections that are at most 10 km away and that the new Dev
+     * has at least one of the filtered technologies
+     */
+    const sendSocketMessageTo = io.findConnections(
       { latitude, longitude },
       techsArray
     )
 
-    sendMessage(sendSocketMessageTo, 'new-dev', dev)
+    io.sendMessage(sendSocketMessageTo, 'new-dev', dev)
 
     return res.json(dev)
   }

@@ -1,5 +1,8 @@
-function parse (str: string, divider?: string) : string[] {
-  return str?.split(divider || ',').map(tech => tech.trim())
+/**
+ * Convert string to Array of strings
+ */
+function parse (str: string, separator?: string) {
+  return str?.split(separator || ',').map(tech => tech.trim())
 }
 
 export default parse

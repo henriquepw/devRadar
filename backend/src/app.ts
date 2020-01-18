@@ -6,7 +6,7 @@ import cors from 'cors'
 import http from 'http'
 
 import routes from './routes'
-import { setupWebsocket } from './websocket'
+import io from './webSocket'
 
 class App {
   public app: express.Application
@@ -16,7 +16,8 @@ class App {
     this.app = express()
     this.server = new http.Server(this.app)
 
-    setupWebsocket(this.server)
+    // Initalizing WebSocket
+    io.setupWebsocket(this.server)
 
     this.database()
     this.middlewares()

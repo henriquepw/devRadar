@@ -3,28 +3,33 @@ interface Coordinates {
   longitude: number
 }
 
-function deg2rad (deg: number): number {
+/**
+ * Convert angle degrees to radians
+ */
+function deg2rad (deg: number) {
   return deg * (Math.PI / 180)
 }
 
-// Haversine formula to calculate the great-circle distance between two points
+/**
+ * Haversine formula to calculate the great-circle distance between two points
+ * @param {Object} origin the origin point
+ * @param {Object} to the other point
+ * @returns {number} The distance
+ */
 function getDistanceFromLatLonInKm (
-  centerCoordinates: Coordinates,
-  pointCoordinates: Coordinates
+  origin: Coordinates,
+  to: Coordinates
 ) {
-  // radius of Eath in Km
+  // the radius of Earth in Km
   const radius = 6371
 
-  const { latitude: lat1, longitude: lon1 } = centerCoordinates
-  const { latitude: lat2, longitude: lon2 } = pointCoordinates
-
-  const dLat = deg2rad(lat2 - lat1)
-  const dLon = deg2rad(lon2 - lon1)
+  const dLat = deg2rad(to.latitude - origin.latitude)
+  const dLon = deg2rad(to.longitude - origin.longitude)
 
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(deg2rad(lat1)) *
-      Math.cos(deg2rad(lat2)) *
+    Math.cos(deg2rad(origin.latitude)) *
+      Math.cos(deg2rad(to.latitude)) *
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2)
 
