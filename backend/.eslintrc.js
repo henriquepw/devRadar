@@ -27,5 +27,6 @@ module.exports = {
       'error',
       { argsIgnorePattern: 'next' },
     ],
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
 }

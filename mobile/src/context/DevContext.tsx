@@ -1,11 +1,7 @@
-import React, {
-  FC,
-  useState,
-  createContext,
-  useEffect,
-} from 'react';
+import React, { FC, useState, createContext, useEffect } from 'react';
 
 import api from '~/services/api';
+import { connect, disconnect, subscribeToNewDevs } from '~/services/socket';
 
 interface Location {
   coordinates: number[];
@@ -44,16 +40,23 @@ const DevContext = createContext<ContextProps>({
 const DevProvider: FC = ({ children }) => {
   const [devs, setDevs] = useState<Dev[]>([]);
 
+  function setupWebsocket({ latitude, longitude, techs }: SearchParams) {
+    disconnect();
+
+    connect(latitude, longitude, techs);
+  }
+
   async function loadDevs(params: SearchParams) {
     console.log('loaddevs');
 
     const { data } = await api.get<Response>('/search', { params });
 
     setDevs(data.devs);
+    setupWebsocket(params);
   }
 
   useEffect(() => {
-    console.log('devs provider', devs);
+    subscribeToNewDevs((dev: Dev) => setDevs([...devs, dev]))
   }, [devs]);
 
   return (

@@ -3,7 +3,6 @@ import { lighten } from 'polished';
 const primaryColor = {
   bg: '#232427',
   text: '#F9F9F9',
-  shadow: 'rgba(255, 255, 255, 0.03)',
   active: '#ffa45c',
 };
 
