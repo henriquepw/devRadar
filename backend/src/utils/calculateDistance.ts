@@ -19,7 +19,7 @@ function deg2rad (deg: number) {
 function getDistanceFromLatLonInKm (
   origin: Coordinates,
   to: Coordinates
-) {
+): number {
   // the radius of Earth in Km
   const radius = 6371
 

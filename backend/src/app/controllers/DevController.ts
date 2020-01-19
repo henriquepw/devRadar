@@ -2,7 +2,6 @@ import { Request, Response } from 'express'
 import axios from 'axios'
 
 import Dev, { DevInterface } from '../schemas/Dev'
-
 import parseStringAsArray from '../../utils/parseStringAsArray'
 import io from '../../webSocket'
 
