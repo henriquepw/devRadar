@@ -1,11 +1,11 @@
 import React, { FC, useContext } from 'react';
-
 import { Marker } from 'react-native-maps';
 
-import Avatar from '~/components/Avatar';
 import CalloutView from '~/components/CalloutView';
 
 import DevContext from '~/context/DevContext';
+
+import { Avatar } from './styles';
 
 interface Props {
   navigate(username: string): void;
@@ -24,7 +24,7 @@ const Markers: FC<Props> = ({ navigate }) => {
             latitude: dev.location.coordinates[1],
           }}
         >
-          <Avatar uri={dev.avatar_url} />
+          <Avatar source={{ uri: dev.avatar_url }} />
           <CalloutView
             onPress={() => navigate(dev.github_username)}
             dev={dev}

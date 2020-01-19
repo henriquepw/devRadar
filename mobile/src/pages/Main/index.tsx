@@ -7,8 +7,8 @@ import {
   getCurrentPositionAsync,
 } from 'expo-location';
 
-import SearchForm from '~/components/SearchForm';
 import Markers from '~/components/Markers';
+import SearchForm from '~/components/SearchForm';
 
 import { DevProvider } from '~/context/DevContext';
 

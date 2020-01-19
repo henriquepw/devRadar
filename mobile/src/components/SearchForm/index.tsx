@@ -1,13 +1,11 @@
 import React, { FC, useContext, useState } from 'react';
+
 import { Feather } from '@expo/vector-icons';
 
-import SearchInput from '~/components/SearchInput';
-import LoadButton from '~/components/LoadButton';
+import DevContext from '~/context/DevContext';
 
 import { primaryColor } from '~/styles/colors';
-import { Container } from './styles';
-
-import DevContext from '~/context/DevContext';
+import { Container, LoadButton, SearchInput } from './styles';
 
 interface Props {
   latitude: number;
@@ -26,9 +24,12 @@ const SearchForm: FC<Props> = ({ latitude, longitude }) => {
   return (
     <Container>
       <SearchInput
-        placeholder="Find dev by techs"
         value={techs}
         onChangeText={setTechs}
+        placeholder="Find dev by techs"
+        placeholderTextColor="#999"
+        autoCapitalize="words"
+        autoCorrect={false}
       />
       <LoadButton onPress={handlePress}>
         <Feather name="arrow-right" size={24} color={primaryColor.text} />

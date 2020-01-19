@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Callout } from 'react-native-maps';
 
-import { Container, DevName, DevBio, DevTechs } from './styles';
-
 import { Dev } from '~/context/DevContext';
+
+import { Container, DevName, DevBio, DevTechs } from './styles';
 
 interface Props {
   dev: Dev;
