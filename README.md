@@ -15,10 +15,15 @@
 </p>
 
 ## :clipboard: Description
-Project to find dev around you. Application from 10th Week OmniStack of Rocketseat
+Project to find dev around you. building on 10th Week OmniStack of [Rocketseat](https://rocketseat.com.br/) with a lot of modifications. I enjoyed learning more of Typescript in that project
 
 ## 🧐 What's inside?
 
-- `Web` - ReactJS
-- `Server` - Node.js
+### Technologies
+- `Backend` - Node.js
 - `Mobile` - Reacte Native
+- `Web` - ReactJS
+
+### Linter tools
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
